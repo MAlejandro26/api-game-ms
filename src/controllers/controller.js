@@ -13,7 +13,7 @@ const pool = new Pool(config);
 
 const welcome = async (req, res) =>{
     res.status(200).json({
-        message: 'Ha fallado, ups'
+        message: 'Bienvenido'
     })
 }
 
@@ -22,7 +22,13 @@ const getGames = async (req, res) => {
     res.status(200).json(response.rows);
 };
 
+const getPersonajes = async (req, res) => {
+    const response = await pool.query('SELECT * FROM brawl_per;');
+    res.status(200).json(response.rows);
+}
+
 module.exports = {
     welcome,
-    getGames
+    getGames,
+    getPersonajes
 };
